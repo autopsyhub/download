@@ -1,0 +1,76 @@
+<script>
+$(document).ready(function(){
+$('.owl-carousel').owlCarousel({
+loop:true,
+margin:30,
+responsiveClass:true,
+dots : false,
+navText : ['<i class="icon-arrow-left" aria-hidden="true"></i>','<i class="icon-arrow-right" aria-hidden="true"></i>'],
+navContainer: '.main-content .custom-nav',
+responsive:{
+0:{
+items:1,
+nav:true
+},
+360:{
+items:2,
+nav:true
+},
+600:{
+items:3,
+nav:false
+},
+1000:{
+items:4,
+nav:true,
+loop:false
+}
+}
+})
+});
+
+$(function() {
+let percent = 15; // Скидка в процентах
+$('.skid').each((key, val) => {
+$(val).text( ( Math.round( $(val).text() - $(val).text() * percent * 0.01 ) ) || 'xxx ');
+});
+});
+
+$(document).ready(function() {
+$submenu = $('.child-menu-ul');
+$('.child-menu .toggle-right').on('click', function(e) {
+e.preventDefault();
+$this = $(this);
+$parent = $this.parent().next();
+// $parent.addClass('active');
+$tar = $('.child-menu-ul');
+if (!$parent.hasClass('active')) {
+$tar.removeClass('active').slideUp('fast');
+$parent.addClass('active').slideDown('fast');
+} else {
+$parent.removeClass('active').slideUp('fast');
+}
+});
+});
+$(window).scroll(function() {
+if($(this).scrollTop() > 26)
+{
+$('.navbar').removeClass('navbar-light');
+$('.navbar').addClass('navbar-dark bg-dark2 rounded-0');
+} else {
+$('.navbar').removeClass('navbar-dark bg-dark2 rounded-0');
+$('.navbar').addClass('navbar-light');
+}
+});
+$(function () {
+$('[data-toggle="tooltip"]').tooltip()
+})
+$(function () {
+$('[data-toggle="popover"]').popover()
+})
+$( document ).ready(function() {
+$( "#gcom" ).click(function() {
+$('.toast').toast('show');
+});
+});
+</script>
